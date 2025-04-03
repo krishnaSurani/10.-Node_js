@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <form action="/updateData" method="post">
+        <input type="text" name="id" placeholder="Id" value="<%=singleData.id%>" hidden id="">
+        <input type="text" placeholder="Add task" value="<%=singleData.task%>" name="task" id="" >
+        <select name="priority">
+            <option value="high" <%= singleData.priority == "high" ? "selected" : "" %>>High</option>
+            <option value="medium" <%= singleData.priority == "medium" ? "selected" : "" %>>Medium</option>
+            <option value="low" <%= singleData.priority == "low" ? "selected" : "" %>>Low</option>
+        </select>
+        <button type="submit">Update task</button>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex justify-center items-center min-h-screen p-4">
+
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-center">Update Task</h1>
+
+        <form action="/updateData" method="post" class="flex flex-col space-y-4">
+            <!-- Hidden ID Input -->
+            <input type="hidden" name="id" value="<%=singleData.id%>">
+
+            <!-- Task Input -->
+            <label class="text-gray-300">Task</label>
+            <input type="text" placeholder="Add task" value="<%=singleData.task%>" name="task"
+                class="p-2 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <!-- Priority Selection -->
+            <label class="text-gray-300">Priority</label>
+            <select name="priority"
+                class="p-2 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="high" <%= singleData.priority == "high" ? "selected" : "" %>>High</option>
+                <option value="medium" <%= singleData.priority == "medium" ? "selected" : "" %>>Medium</option>
+                <option value="low" <%= singleData.priority == "low" ? "selected" : "" %>>Low</option>
+            </select>
+
+            <!-- Update Button -->
+            <button type="submit"
+                class="bg-blue-600 hover:bg-blue-700 transition-all text-white p-2 rounded-md shadow-md">
+                Update Task
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

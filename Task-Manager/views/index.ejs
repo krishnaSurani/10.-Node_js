@@ -1,0 +1,131 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    <h1>Task Manager</h1>
+
+    <form action="/addData" method="post">
+        <input type="text" placeholder="Add task" name="task" id="" >
+        <select name="priority" id="">
+            <option value="">Priority</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <button type="submit">Add task</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>select</td>
+                <td>Task</td>
+                <td>Priority</td>
+                <td>Status</td>
+                <td colspan="2">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% data && data.map((el,i)=>{%>
+                <tr>
+                    <td><%=el.id%></td>
+                    <td>
+                        <form action="/updateStatus" method="get">
+                            <input type="hidden" name="id" value="<%= el.id %>">
+                            <input type="checkbox" onchange="this.form.submit()" <% el.status =='Complete'? 'checked': '' %> >
+                        </form>
+                    </td>
+                    <td><%=el.task%></td>
+                    <td><%=el.priority%></td>
+                    <td><%=el.status %></td>
+                    <td><a href="/editData?id=<%=el.id%>"><button>Edit</button></a></td>
+                    <td><a href="/deleteData?id=<%=el.id%>"><button>Delete</button></a></td>
+                </tr>
+            <% }) %>
+
+
+        </tbody>
+    </table>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex justify-center items-center min-h-screen flex-col p-4">
+
+    <h1 class="text-3xl font-bold mb-6">Task Manager</h1>
+
+    <!-- Task Form -->
+    <form action="/addData" method="post" class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div class="flex flex-col space-y-3">
+            <input type="text" placeholder="Add task" name="task" class="p-2 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            
+            <select name="priority" class="p-2 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">Priority</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 transition-all text-white p-2 rounded-md">Add Task</button>
+        </div>
+    </form>
+
+    <!-- Task Table -->
+    <div class="overflow-x-auto w-full max-w-4xl mt-8">
+        <table class="w-full text-left border-collapse border border-gray-700 rounded-lg shadow-lg">
+            <thead>
+                <tr class="bg-gray-700">
+                    <th class="p-3 border border-gray-600">Id</th>
+                    <th class="p-3 border border-gray-600">Select</th>
+                    <th class="p-3 border border-gray-600">Task</th>
+                    <th class="p-3 border border-gray-600">Priority</th>
+                    <th class="p-3 border border-gray-600">Status</th>
+                    <th class="p-3 border border-gray-600">Edit</th>
+                    <th class="p-3 border border-gray-600">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data && data.map((el, i) => { %>
+                    <tr class="border border-gray-700">
+                        <td class="p-3 border border-gray-600"><%= el.id %></td>
+                        <td class="p-3 border border-gray-600">
+                            <form action="/updateStatus" method="get">
+                                <input type="hidden" name="id" value="<%= el.id %>">
+                                <input type="checkbox" name="status"  value="Complete"  onchange="this.form.submit()"   <% if (el.status === 'Complete') { %> checked <% } %> class="h-5 w-5 text-blue-500 focus:ring focus:ring-blue-500">
+                            </form>
+                        </td>
+                        <td class="p-3 border border-gray-600"><%= el.task %></td>
+                        <td class="p-3 border border-gray-600 capitalize">
+                            <span class="<%= el.priority === 'high' ? 'text-red-500' : el.priority === 'medium' ? 'text-yellow-500' : 'text-green-500' %> font-bold"><%= el.priority %></span>
+                        </td>
+                        <td class="p-3 border border-gray-600">
+                            <span class="<%= el.status === 'Complete' ? 'text-green-500' : 'text-yellow-500' %> font-bold"><%= el.status %></span>
+                        </td>
+                        <td class="p-3 border border-gray-600">
+                            <a href="/editData?id=<%= el.id %>" class="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-md transition-all">Edit</a>
+                        </td>
+                        <td class="p-3 border border-gray-600">
+                            <a href="/deleteData?id=<%= el.id %>" class="bg-red-500 hover:bg-red-600 text-white p-2 rounded-md transition-all">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
