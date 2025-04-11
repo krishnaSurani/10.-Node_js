@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- tailwindcss  CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+    <!-- navbar -->
+
+    <div class="h-[130px] w-full">
+        <div class="h-[30%] w-full bg-[#113955] flex justify-evenly items-center">
+            <div class="h-full w-[20%] flex justify-evenly items-center">
+                <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-facebook-f fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-threads fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-x-twitter fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-pinterest-p fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-quora fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-youtube fa-lg" style="color: #ffffff;"></i>
+            </div>
+            <div class="h-full w-[40%] flex justify-center items-center">
+                <p class="text-white text-sm">Subscribe to our Newsletter with your mail & get regular Offers from Bookbins!</p></div>
+            <div class="h-full w-[15%] pt-2 text-sm">
+                <ul class="flex justify-evenly items-center text-white">
+                    <li>About Us</li>
+                    <li>Track Order</li>
+                    <li>FAQ</li>
+                </ul>
+                
+            </div>
+        </div>
+
+        <div class="h-[65%] w-full flex justify-evenly items-center mt-2">
+            <div class="h-[80%] w-[15%] flex justify-center items-center">
+                <img src="https://bookbins.b-cdn.net/wp-content/uploads/2024/04/Bookbins-2.0-Corporate-Blue-Full-Logo-1200x318.png" alt="" class="h-[65%]">
+            </div>
+            <div class="h-[90%] w-[40%] flex justify-center items-center">
+                <input type="text" placeholder=" 🔍 Search Books..." class=" h-[50%] w-[70%] rounded-full px-3 bg-[#113955] placeholder:text-white">
+            </div>
+            <div class="h-[90%] w-[20%] flex justify-center items-center">
+                <button class="bg-[#113955] h-[50%] px-3 rounded-sm text-white cursor-pointer"><a href="/addform">Add Books</a></button></div>
+        </div>
+    </div>
+
+    <div class="h-[560px] w-full">
+        <img src="https://bookbins.in/wp-content/uploads/2025/02/Home-Page-Banner-Harry-Potter-Box-Set-Buy-Online-Bookbins-01.jpg" alt="">
+    </div>
+
+
+
+    <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- Book Card -->
+        <%book.map((el,i)=>{%>
+            <div class="bg-white border border-[#dce6f2] rounded-xl shadow-md p-5 transition hover:shadow-lg">
+                <img
+                  src="<%=el.img%>>"
+                  alt="Book Cover"
+                  class="w-[70%] h-64  rounded-lg mb-4 ms-[15%]"
+                />
+                <h2 class="text-[#113955] text-xl font-semibold mb-1 capitalize"><%=el.title%></h2>
+                <p class="text-gray-600 mb-1 capitalize">By <%=el.author%></p>
+                <p class="text-[#113955] font-medium mb-4">Rs. <%=el.price%></p>
+                <div class="flex gap-2">
+                 <a href="/editData?id=<%=el.id%>"> <button class="bg-[#113955] hover:bg-[#0e2f47] text-white px-4 py-2 rounded-md transition cursor-pointer">Edit</button></a>
+                 <a href="/deleteData?id=<%=el.id%>"> <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition cursor-pointer">Delete</button></a>
+                </div>
+              </div>
+        <% }) %>
+    
+        <!-- You can duplicate this card div for more books -->
+    
+      </div>
+
+</body>
+</html>

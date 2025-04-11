@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book Detail</title>
+     <!-- tailwindcss  CDN-->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+     <!-- font-awesome CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+</head>
+<body>
+
+    <!-- navbar -->
+
+    <div class="h-[130px] w-full">
+        <div class="h-[30%] w-full bg-[#113955] flex justify-evenly items-center">
+            <div class="h-full w-[20%] flex justify-evenly items-center">
+                <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-facebook-f fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-threads fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-x-twitter fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-pinterest-p fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-quora fa-lg" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-youtube fa-lg" style="color: #ffffff;"></i>
+            </div>
+            <div class="h-full w-[40%] flex justify-center items-center">
+                <p class="text-white text-sm">Subscribe to our Newsletter with your mail & get regular Offers from Bookbins!</p></div>
+            <div class="h-full w-[15%] pt-2 text-sm">
+                <ul class="flex justify-evenly items-center text-white">
+                    <li>About Us</li>
+                    <li>Track Order</li>
+                    <li>FAQ</li>
+                </ul>
+                
+            </div>
+        </div>
+
+        <div class="h-[65%] w-full flex justify-evenly items-center mt-2">
+            <div class="h-[80%] w-[15%] flex justify-center items-center">
+                <img src="https://bookbins.b-cdn.net/wp-content/uploads/2024/04/Bookbins-2.0-Corporate-Blue-Full-Logo-1200x318.png" alt="" class="h-[65%]">
+            </div>
+            <div class="h-[90%] w-[40%] flex justify-center items-center">
+                <input type="text" placeholder=" 🔍 Search Books..." class=" h-[50%] w-[70%] rounded-full px-3 bg-[#113955] placeholder:text-white">
+            </div>
+            <div class="h-[90%] w-[20%] flex justify-center items-center">
+                <a href="/addform"><button class="bg-[#113955] h-[50%] px-3 rounded-sm text-white cursor-pointer">Add Books</button></a></div>
+        </div>
+    </div>
+
+    <div class="bg-[#f2f7fb] min-h-screen flex items-center justify-center px-4 py-10">
+         <!-- Edit Book Form -->
+     <form class="bg-white border border-[#dce6f2] rounded-xl p-6 shadow-md space-y-4 w-full max-w-md" action="/updateData" method="post">
+        <h2 class="text-2xl font-semibold text-[#113955] text-center">Edit Book Detail</h2>
+        
+        <input type="text" name="id" value="<%=data.id%>" placeholder="Id" hidden
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
+
+        <div>
+          <label class="block text-[#113955] mb-1">Book Image URL</label>
+          <input type="text" name="img" value="<%=data.img%>" placeholder="Enter image URL"
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
+        </div>
+    
+        <div>
+          <label class="block text-[#113955] mb-1">Book Name</label>
+          <input type="text" name="title" value="<%=data.title%>" placeholder="Enter book name"
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
+        </div>
+    
+        <div>
+          <label class="block text-[#113955] mb-1">Author Name</label>
+          <input type="text" name="author" value="<%=data.author%>" placeholder="Enter author name"
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
+        </div>
+    
+        <div>
+          <label class="block text-[#113955] mb-1">Price (Rs.)</label>
+          <input type="text" name="price" value="<%=data.price%>" placeholder="Enter price"
+                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
+        </div>
+    
+        <button type="submit"
+                class="w-full bg-[#113955] hover:bg-[#0e2f47] text-white font-medium py-2 rounded-md transition">
+          Update Book Detail
+        </button>
+      </form>
+    </div>
+</body>
+</html>
