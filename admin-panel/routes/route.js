@@ -1,13 +1,17 @@
-const express =  require("express");
+const express = require('express');
+const multer = require('../middleware/multer');
 
-const route = express.Router()
-const ctl = require("../controller/ctl")
+const route = express.Router();
+const ctl = require('../controller/ctl');
 
-route.get("/",ctl.dashboard)
-route.get("/addAdmin",ctl.addAdmin)
-route.get("/addAdmin",ctl.addAdmindata)
-route.get("/viewAdmin",ctl.viewAdmin)
-
-// route.post("/addData",ctl.add)
+route.get("/",ctl.login)
+route.post("/login",ctl.loginadmin);
+route.get('/dashboard', ctl.dashboard);
+route.get('/addAdmin', ctl.addAdmin);
+route.get('/viewAdmin', ctl.viewAdmin);
+route.post('/addrecord',multer, ctl.add);
+route.get("/deldata",ctl.delete);
+route.get("/editdata",ctl.edit);
+route.post("/updaterec",multer,ctl.update);
 
 module.exports = route;
