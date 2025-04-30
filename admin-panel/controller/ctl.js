@@ -12,6 +12,7 @@ module.exports.loginadmin = async (req, res) => {
        return res.redirect("/")
     }
     if (req.body.password = admin.password) {
+        res.cookie("admin",admin)
         res.redirect("/dashboard")
     }
     else{
@@ -19,8 +20,26 @@ module.exports.loginadmin = async (req, res) => {
     }
 }
 
+module.exports.logout = (req,res)=>{
+    req.clearcookie("admin")
+    res.redirect("/")
+}
+
 module.exports.dashboard = (req, res) => {
-    res.render("dashboard");
+    if(req.cookies.admin){
+        res.render("deshboard")
+    }
+    else{
+        res.redirect("/")
+    }
+}
+module.exports.addAdmin = (req, res) => {
+    if(req.cookies.admin){
+        res.render("addAdmin")
+    }
+    else{
+        res.redirect("/")
+    }
 }
 
 module.exports.addAdmin = (req, res) => {
@@ -69,57 +88,3 @@ module.exports.update = async(req,res)=>{
         res.redirect("/viewAdmin")
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // CREATE
-// module.exports.addAdmindata =async (req, res) => {
-//    await schema.create(req.body).then(() => {
-//       res.redirect("/viewAdmin");
-//     });
-//   };
-
-// // READ
-// module.exports.viewAdmin = (req, res) => {
-//     schema.find().then((admins) => {
-//       res.render("viewAdmin", { admins });
-//     });
-//   };
-
-// // LOAD Edit Page
-// module.exports.editAdmin = (req, res) => {
-//     schema.findById(req.query.id).then((admin) => {
-//       res.render("editAdmin", { admin });
-//     });
-//   };
-
-// // UPDATE
-// module.exports.updateAdmin = (req, res) => {
-//     schema.findByIdAndUpdate(req.body.id, req.body).then(() => {
-//       res.redirect("/viewAdmin");
-//     });
-//   };
-
-// // DELETE
-// module.exports.deleteAdmin = (req, res) => {
-//     schema.findByIdAndDelete(req.query.id).then(() => {
-//       res.redirect("/viewAdmin");
-//     });
-//   };
-
-// module.exports.viewAdmin = (req,res)=>{
-//     res.render("viewAdmin")
-// }

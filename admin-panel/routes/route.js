@@ -6,6 +6,7 @@ const ctl = require('../controller/ctl');
 
 route.get("/",ctl.login)
 route.post("/login",ctl.loginadmin);
+route.post("/logout",ctl.logout);
 route.get('/dashboard', ctl.dashboard);
 route.get('/addAdmin', ctl.addAdmin);
 route.get('/viewAdmin', ctl.viewAdmin);

@@ -23,5 +23,5 @@ const schema = mongoose.Schema({
     },
 });
 
-const fSchema = mongoose.model("users",schema);
+const fSchema = mongoose.model("admin",schema);
 module.exports = fSchema;
