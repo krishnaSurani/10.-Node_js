@@ -61,12 +61,12 @@
     <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4 py-10 px-4">
         <% book.map((el) => { %>
             <div class="bg-white border border-[#dce6f2] rounded-xl shadow-md p-5 transition hover:shadow-lg">
-                <img src="<%= el.img %>" alt="Book Cover" class="w-[70%] h-64 rounded-lg mb-4 mx-auto" />
+                <img src="/uploads/<%= book.img %>" alt="Book Cover" class="w-[70%] h-64 rounded-lg mb-4 mx-auto" />
                 <h2 class="text-[#113955] text-xl font-semibold mb-1 capitalize"><%= el.title %></h2>
                 <p class="text-gray-600 mb-1 capitalize">By <%= el.author %></p>
                 <p class="text-[#113955] font-medium mb-4">Rs. <%= el.price %></p>
                 <div class="flex gap-2">
-                    <a href="/editData?id=<%= el._id %>">
+                    <a href="/edit?id=<book_id>">
                         <button class="bg-[#113955] hover:bg-[#0e2f47] text-white px-4 py-2 rounded-md transition cursor-pointer">Edit</button>
                     </a>
                     <a href="/deleteData?id=<%= el._id %>">

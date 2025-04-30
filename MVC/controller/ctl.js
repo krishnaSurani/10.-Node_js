@@ -12,12 +12,13 @@ module.exports.form = (req, res) => {
 };
 
 module.exports.add = async (req, res) => {
-    req.body.img = req.file.path
-    console.log(req.body)
+    req.body.img = req.file.path;
+    // console.log(req.body);
     await firstSchema.create(req.body).then(() => {
-       res.render('index')
+        res.redirect('/');
     });
 };
+
 
 module.exports.delete = async (req, res) => {
     let singleData = await firstSchema.findById(req.query.id);
