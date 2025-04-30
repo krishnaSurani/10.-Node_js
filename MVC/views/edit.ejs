@@ -57,33 +57,39 @@
         <form class="bg-white border border-[#dce6f2] rounded-xl p-6 shadow-md space-y-4 w-full max-w-md" action="/updateData" method="post">
             <h2 class="text-2xl font-semibold text-[#113955] text-center">Edit Book Detail</h2>
 
+            <!-- Hidden ID Field -->
             <input type="text" name="id" value="<%=data.id%>" placeholder="Id" hidden
                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
 
+            <!-- Book Image URL -->
             <div>
                 <label class="block text-[#113955] mb-1">Book Image URL</label>
                 <input type="text" name="img" value="<%=data.img%>" placeholder="Enter image URL"
                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
             </div>
 
+            <!-- Book Name -->
             <div>
                 <label class="block text-[#113955] mb-1">Book Name</label>
                 <input type="text" name="title" value="<%=data.title%>" placeholder="Enter book name"
                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
             </div>
 
+            <!-- Author Name -->
             <div>
                 <label class="block text-[#113955] mb-1">Author Name</label>
                 <input type="text" name="author" value="<%=data.author%>" placeholder="Enter author name"
                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
             </div>
 
+            <!-- Price -->
             <div>
                 <label class="block text-[#113955] mb-1">Price (Rs.)</label>
                 <input type="text" name="price" value="<%=data.price%>" placeholder="Enter price"
                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#113955]" />
             </div>
 
+            <!-- Submit Button -->
             <button type="submit"
                     class="w-full bg-[#113955] hover:bg-[#0e2f47] text-white font-medium py-2 rounded-md transition">
                 Update Book Detail

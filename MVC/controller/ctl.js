@@ -1,51 +1,51 @@
-// const schema = require("../model/schema")
+const firstSchema = require("../model/schema");
 const fs = require('fs');
 
-
-
-module.exports.firstpage = async(req, res) => {
-    await firstSchema.find({}).then((data) => {
-    res.render("index", { data });
-
-    })
-}
+module.exports.firstpage = async (req, res) => {
+    await firstSchema.find({}).then((book) => {
+        res.render("index", { book });
+    });
+};
 
 module.exports.form = (req, res) => {
     res.render("form");
-}
+};
 
-module.exports.add = async(req, res) => {
-    req.body.profile = req.file.path;
-    
-    await firstSchema.create(req.body).then(() => { 
-        res.redirect('/index');
-    })    
-}
+module.exports.add = async (req, res) => {
+    req.body.img = req.file.path
+    console.log(req.body)
+    await firstSchema.create(req.body).then(() => {
+       res.render('index')
+    });
+};
 
-
-module.exports.delete = async(req, res) => {
+module.exports.delete = async (req, res) => {
     let singleData = await firstSchema.findById(req.query.id);
-        fs.unlinkSync(singleData.profile)
-    await firstSchema.findByIdAndDelete(req.query.id).then(()=>{
-            res.redirect("/index");
-        })
-}
+    fs.unlinkSync(singleData.img);
+    await firstSchema.findByIdAndDelete(req.query.id).then(() => {
+        res.redirect("/");
+    });
+};
 
-module.exports.edit = async(req,res)=>{
+module.exports.edit = async (req, res) => {
     let data = await firstSchema.findById(req.query.id);
-    res.render("edit",{data})
-}
+    res.render("edit", { book });
+};
 
+module.exports.update = async (req, res) => {
+    let singleData = await firstSchema.findById(req.body.id);
+    let img = "";
 
-module.exports.update = async(req,res)=>{
-     let singleData = await firstSchema.findById(req.body.id);
-     let img = ""
-    
-        req.file ? img = req.file.path : img = singleData.profile;
-        req.file && fs.unlinkSync(singleData.profile)
-    
-    req.body.profile = img;
-    await firstSchema.findByIdAndUpdate(req.body.id,req.body).then(()=>{
-        res.redirect("/index")
-    })
-}
+    if (req.file) {
+        img = req.file.path;
+        fs.unlinkSync(singleData.img);
+    } else {
+        img = singleData.img;
+    }
+
+    req.body.img = img;
+
+    await firstSchema.findByIdAndUpdate(req.body.id, req.body).then(() => {
+        res.redirect("/");
+    });
+};
