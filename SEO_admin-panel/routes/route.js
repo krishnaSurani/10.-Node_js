@@ -9,7 +9,7 @@ route.post("/login",ctl.loginadmin);
 route.get("/logout",ctl.logout);
 route.get('/dashboard', ctl.dashboard);
 route.get('/addAdmin', ctl.addAdmin);
-route.get('/viewAdmin', ctl.viewAdmin);
+route.get('/table', ctl.viewAdmin);
 route.post('/addrecord',multer, ctl.add);
 route.get("/deldata",ctl.delete);
 route.get("/editdata",ctl.edit);

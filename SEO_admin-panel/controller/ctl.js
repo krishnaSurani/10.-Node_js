@@ -49,7 +49,7 @@ module.exports.addAdmin = (req, res) => {
 module.exports.viewAdmin = async (req, res) => {
     if (req.cookies.admin) {
         await fSchema.find({}).then((data) => {
-            res.render("viewAdmin", { data });
+            res.render("table", { data });
         })
     }
     else {
@@ -62,7 +62,7 @@ module.exports.add = async (req, res) => {
     req.body.profile = req.file.path;
 
     await fSchema.create(req.body).then(() => {
-        res.redirect('/viewAdmin');
+        res.redirect('/table');
     })
 }
 
@@ -71,7 +71,7 @@ module.exports.delete = async (req, res) => {
     let singleData = await fSchema.findById(req.query.id);
     fs.unlinkSync(singleData.profile)
     await fSchema.findByIdAndDelete(req.query.id).then(() => {
-        res.redirect("/viewAdmin");
+        res.redirect("/table");
     })
 }
 
@@ -90,7 +90,7 @@ module.exports.update = async (req, res) => {
 
     req.body.profile = img;
     await fSchema.findByIdAndUpdate(req.body.id, req.body).then(() => {
-        res.redirect("/viewAdmin")
+        res.redirect("/table")
     })
 }
 
