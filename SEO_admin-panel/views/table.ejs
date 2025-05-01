@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViewAdmin</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css">
 </head>
 <body>
+  <%- include("header") %>
+  <%- include("aside") %>
 
-    <%-include("aside")%>
-
-    <%-include("header")%>
-
-    <table class="table text-nowrap align-middle mb-0">
-        <thead>
-          <tr class="border-2 border-bottom border-primary"> 
-            <th scope="col" class="ps-0">Id</th>
-            <th scope="col" >Profile_Pic</th>
-            <th scope="col" class="text-center">Name</th>
-            <th scope="col" class="text-center">Email</th>
-            <th scope="col" class="text-center">Password</th>
-            <th scope="col" class="text-center">Actions</th>
-          </tr>
-        </thead>
-
-        <%data.map((e,i)=>{%>
-            <tbody>
-              <tr style="text-align: center;">
-                <td><%=i+1%></td>
-                <td><img src="<%=e.profile%>" width="70px"  alt=""></td>
-                <td><%=e.fname%></td>
-                <td><%=e.lname%></td>
-                <td><%=e.email%></td>
-                <td><%=e.password%></td>
-                <td><a href="/editdata?id=<%=e.id %>" class="btn btn-sm btn-edit">Edit</a></td>
-                <td><a href="/deldata?id=<%=e.id%>" class="btn btn-sm btn-delete">Delete</a></td>
-              </tr>
-            </tbody>
-            <%})%>
-      </table>
+  <div style="margin-left: 18%;">
+  <table class="table text-nowrap align-middle mb-0">
+    <thead>
+      <tr class="border-2 border-bottom border-primary">
+        <th scope="col" class="text-center">Id</th>
+        <th scope="col">Profile Pic</th>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col" class="text-center">Email</th>
+        <th scope="col" class="text-center">Password</th>
+        <th scope="col" class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.map((e, i) => { %>
+        <tr style="text-align: center;">
+          <td><%= i + 1 %></td>
+          <td><img src="<%= e.profile %>" width="70px" alt=""></td>
+          <td><%= e.fname %> <%= e.lname %></td>
+          <td><%= e.email %></td>
+          <td><%= e.password %></td>
+          <td>
+            <a href="/editdata?id=<%= e.id %>" class="btn btn-sm btn-primary">Edit</a>
+            <a href="/deldata?id=<%= e.id %>" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
