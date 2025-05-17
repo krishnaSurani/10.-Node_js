@@ -5,9 +5,10 @@ module.exports.addCat = (req,res)=>{
 }
 
 module.exports.viewCat = async (req,res)=>{
-    await schema.find({}).then((data)=>{
-        res.render("viewCategory",{data})
-    })
+//  res.render("viewCategory");
+ await schema.find({}).then((data)=>{
+    res.render("viewCategory",{data});
+ })
 }
 
 
@@ -16,7 +17,8 @@ module.exports.addCategory = async (req,res)=>{
     req.body.image = req.file.path
 
     await schema.create(req.body).then(()=>{
-        res.redirect("/category/viewCategory")
+        res.redirect("/category/viewCat")
     })
     
 }
+

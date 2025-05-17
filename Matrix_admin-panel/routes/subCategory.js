@@ -1,10 +1,10 @@
-const express = require("express")
-const route = express.Router();
-const ctl = require("../controller/subCategoryCtl")
-const passport = require("../middleware/passportSt")
+const express=require("express");
+const route=express.Router();
+const passport=require("../middleware/passportSt");
+const ctl=require("../controller/subCategoryCtl");
 
-route.get("/addsubCat", passport.checkAuth, ctl.addsubCat)
-route.post("/addsubCategory", passport.checkAuth, ctl.addsubCategory)
-route.get("/viewsubCat", passport.checkAuth, ctl.viewsubCategory)
+route.get("/addsubCat",passport.checkAuth,ctl.addSubCat);
+route.get("/viewsubCategory",passport.checkAuth,ctl.viewSubCat);
+route.post("/addsubCatdata",passport.checkAuth,ctl.addsubCategory);
 
 module.exports = route

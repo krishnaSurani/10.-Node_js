@@ -93,21 +93,26 @@
                                     <%=locals.flash.success%>
                                   </div>
                                   <%}%>
-                            <form action="/category/addCat" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="/subcategory/addsubCatdata" method="post"  class="form-horizontal">
                                 <div class="card-body">
                                     <h4 class="card-title">Category Info</h4>
+                                     <div class="form-group row">
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Sub Category Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="image" name="subcatName" placeholder="Sub Category Name Here">
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Category Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="catName" name="fname" placeholder="First Name Here">
+                                            <select name="categoryId" id="">
+                                               <%data.map((e,i)=>{%>
+                                                    <option value="<%=e.id%>"><%=e.catName%></option>
+                                               <%})%> 
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Image</label>
-                                        <div class="col-sm-9">
-                                            <input type="file" class="form-control" id="image" name="image" placeholder="Last Name Here">
-                                        </div>
-                                    </div>
+                                   
                                     
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     

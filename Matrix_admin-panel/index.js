@@ -34,7 +34,7 @@ app.use(flash.setFlash)
 
 app.use("/",require('./routes/route'));
 app.use("/category",require('./routes/category'));
-app.use("/subcategory",require('./routes/subCategory'));
+app.use("/subcategory",require("./routes/subCategory"));
 
 app.listen(port , (err)=>
 err ? console.log(err) : console.log(`Server is running on port ${port}`)
